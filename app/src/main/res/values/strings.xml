@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Selfilm</string>
+
+    <string name="facebook_app_id">890116894805627</string>
+    <string name="fb_login_protocol_scheme">fb890116894805627</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_login_with_facebook">Login with facebook</string>
+    <string name="button_login_with_google">Login with google</string>
+    <string name="web_client_id">391006789421-58n50t62jbvp0s2a6471vktr45421j4o.apps.googleusercontent.com</string>
+    <string name="in_process">Processsing...</string>
+
+
+    <!--    api urls-->
+
+    <string name="url">https://6bdgv03ed8.execute-api.ap-south-1.amazonaws.com/test/insertusers</string>
+    <string name="getprofileurl">https://8omyg9ta4j.execute-api.ap-south-1.amazonaws.com/test/getuserprofile</string>
+    <string name="updateprofileurl">https://s8q1w3n1f0.execute-api.ap-south-1.amazonaws.com/test/updateuserprofile</string>
+
+</resources>

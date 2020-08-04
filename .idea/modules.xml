@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SelfilmAndroid.iml" filepath="$PROJECT_DIR$/.idea/modules/SelfilmAndroid.iml" group="SelfilmAndroid" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="SelfilmAndroid/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/deepar/deepar.iml" filepath="$PROJECT_DIR$/.idea/modules/deepar/deepar.iml" group="SelfilmAndroid/deepar" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/video-compressor/video-compressor.iml" filepath="$PROJECT_DIR$/.idea/modules/video-compressor/video-compressor.iml" group="SelfilmAndroid/video-compressor" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/video-effect/video-effect.iml" filepath="$PROJECT_DIR$/.idea/modules/video-effect/video-effect.iml" group="SelfilmAndroid/video-effect" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/video-record/video-record.iml" filepath="$PROJECT_DIR$/.idea/modules/video-record/video-record.iml" group="SelfilmAndroid/video-record" />
+    </modules>
+  </component>
+</project>

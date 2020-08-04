@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#ffde03</color>
+
+    <color name="graycolor">#D3D3D3</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="lightgraycolor">#f2f2f2</color>
+    <color name="darkgray">#93959A</color>
+    <color name="dimgray">#696969</color>
+    <color name="lightblack">#5d5d5d</color>
+    <color name="gainsboro">#DCDCDC</color>
+    <color name="facebook_button_color">#3b5999</color>
+    <color name="facebook_button_color_pressed">#2f477a</color>
+    <color name="google_button_color">#d44837</color>
+    <color name="google_button_color_pressed">#FFA43528</color>
+    <color name="button_pressed_text_color">#bcbcbc</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="follow_button_color">#0097D3</color>
+    <color name="follow_button_pressed_color">#0087BC</color>
+    <color name="follow_button_light_color">#ffffff</color>
+    <color name="follow_button_light_pressed_color">#f7f7f7</color>
+
+
+    <color name="purple">#E040FB</color>
+    <color name="cccccc">#cccccc</color>
+    <color name="ff7f000000">#7f000000</color>
+    <color name="f4d4d4d">#4d4d4d</color>
+    <color name="ff666666">#666666</color>
+    <color name="alpha_white_70">#4Dffffff</color>
+</resources>

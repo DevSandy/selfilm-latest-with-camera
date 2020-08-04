@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/toolbarlay"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:id="@+id/cancelbtn"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            android:src="@drawable/ic_baseline_cancel_24"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"></ImageView>
+    </LinearLayout>
+        <FrameLayout
+            android:layout_below="@+id/toolbarlay"
+            android:id="@+id/fl"
+            android:layout_width="match_parent"
+            android:background="@android:color/black"
+            android:layout_height="400dp">
+            <VideoView
+                android:id="@+id/videoView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/iv_thumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:visibility="gone"/>
+            <ImageView
+                android:layout_gravity="end|bottom"
+                android:layout_margin="20dp"
+                android:layout_width="50dp"
+                android:src="@drawable/logonobg"
+                android:scaleType="fitXY"
+                android:layout_height="50dp"></ImageView>
+
+            <ImageView
+                android:id="@+id/iv_play"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                android:src="@drawable/ic_chat_play"/>
+        </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edcaption"
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:hint="Caption here..."></EditText>
+        <EditText
+            android:id="@+id/edhashtags"
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:hint="#HashTags here..."></EditText>
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/follow_btn_bg"
+            android:text="Upload"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            android:layout_marginRight="8dp"
+            android:layout_height="wrap_content"></Button>
+    </LinearLayout>
+
+</RelativeLayout>

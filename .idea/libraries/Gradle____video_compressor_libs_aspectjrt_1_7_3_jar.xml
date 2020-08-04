@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./video-compressor/libs/aspectjrt-1.7.3.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/video-compressor/libs/aspectjrt-1.7.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

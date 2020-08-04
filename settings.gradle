@@ -1,0 +1,3 @@
+rootProject.name='SelfilmAndroid'
+
+include ':app', ':deepar',':video-record', ':video-compressor', ':video-effect'

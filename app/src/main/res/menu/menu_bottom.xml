@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cnb_unselectedColor="#fff">
+
+
+    <item
+        android:id="@+id/addnew"
+        android:icon="@drawable/ic_baseline_add_circle_outline_24"
+        android:title="Upload"
+        app:cnb_backgroundColor="#ffde03"
+        app:cnb_iconColor="#000000"
+        app:cnb_textColor="#000000" />
+
+
+    <item
+        android:id="@+id/discover"
+        android:icon="@drawable/ic_discover"
+        android:title="Discover"
+        app:cnb_backgroundColor="#ffde03"
+        app:cnb_iconColor="#000000"
+        app:cnb_textColor="#000000" />
+
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        app:cnb_backgroundColor="#ffde03"
+        app:cnb_iconColor="#000000"
+        app:cnb_textColor="#000000" />
+
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/ic_account"
+        android:title="Account"
+        app:cnb_backgroundColor="#ffde03"
+        app:cnb_iconColor="#000000"
+        app:cnb_textColor="#000000" />
+    <item
+        android:id="@+id/notifications"
+        android:icon="@drawable/ic_baseline_notifications_24"
+        android:title="Notifications"
+        app:cnb_backgroundColor="#ffde03"
+        app:cnb_iconColor="#000000"
+        app:cnb_textColor="#000000" />
+</menu>

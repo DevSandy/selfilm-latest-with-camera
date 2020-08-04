@@ -1,0 +1,27 @@
+<resources>
+  <string name="app_name">video-effect</string>
+
+  <string name="filter_none">None</string>
+  <string name="filter_invert">Invert</string>
+  <string name="filter_monochrome">MonoChrome</string>
+  <string name="filter_sepia">Sepia</string>
+  <string name="filter_grayscale">Grayscale</string>
+  <string name="filter_sharpen">Sharp</string>
+  <string name="filter_sphererefraction">Sphere</string>
+  <string name="filter_bulgedistortion">Bulged</string>
+  <string name="filter_cgacolorspace">CGA</string>
+  <string name="filter_haze">Haze</string>
+  <string name="filter_bilateral">Bilateral</string>
+  <string name="filter_tonecurve">Tone Curve</string>
+  <string name="filter_vignette">Vignette</string>
+  <string name="filter_blackandwhite">Black And White</string>
+  <string name="filter_overlay">Overlay</string>
+  <string name="filter_barrelblur">Blur</string>
+  <string name="filter_posterize">Posterize</string>
+  <string name="filter_contrast">Constrast</string>
+  <string name="filter_gamma">Gamma</string>
+  <string name="filter_crossprocess">Cross Process</string>
+  <string name="filter_hue">Hue</string>
+  <string name="filter_temperature">Temperature</string>
+  <string name="filter_sketch">Sketch</string>
+</resources>
