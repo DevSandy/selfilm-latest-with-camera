@@ -3,6 +3,7 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ffde03</color>
+    <color name="appcolorbg">#15161a</color>
 
     <color name="graycolor">#D3D3D3</color>
     <color name="transparent">#00ffffff</color>

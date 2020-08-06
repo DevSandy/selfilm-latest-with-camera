@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: :deepar:@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c1862a7e16f6f42467400e593be8bcbc/jetified-deepar/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c1862a7e16f6f42467400e593be8bcbc/jetified-deepar/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c1862a7e16f6f42467400e593be8bcbc/jetified-deepar/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f659093fe3c191c39bd4a59d15f458d/jetified-deepar/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f659093fe3c191c39bd4a59d15f458d/jetified-deepar/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f659093fe3c191c39bd4a59d15f458d/jetified-deepar/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

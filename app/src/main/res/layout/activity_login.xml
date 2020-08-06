@@ -1,44 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_gravity="center"
-    android:background="#ffffff"
+    android:background="@color/appcolorbg"
     android:gravity="center"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".Login">
-
+<LinearLayout
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <ImageView
         android:id="@+id/logo_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_margin="8dp"
         android:transitionName="logo_image"
         android:src="@drawable/logo"/>
     <TextView
+        android:layout_below="@+id/logo_image"
         android:id="@+id/logo_name"
-        android:layout_margin="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello there, Welcome"
-        android:textSize="40sp"
+        android:layout_margin="8dp"
+        android:text="Sign up for SELFILM"
+        android:textSize="35dp"
+        android:fontFamily="@font/seguisym"
         android:transitionName="logo_text"
-        android:textColor="#000"/>
+        android:textColor="@color/white"/>
     <TextView
         android:id="@+id/slogan_name"
         android:layout_width="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_below="@+id/logo_name"
+        android:layout_marginBottom="32dp"
+        android:textColor="#A9A9A9"
         android:layout_height="wrap_content"
-        android:text="Sign In to continue"
-        android:textSize="18sp"/>
+        android:gravity="center"
+        android:text="Create a profile,follow other creators \nbuild your fan following by creating \nyour own videos and earn money !" />
 
     <com.facebook.login.widget.LoginButton
         xmlns:facebook="http://schemas.android.com/apk/res-auto"
         facebook:com_facebook_login_text="Log in with Facebook"
         android:id="@+id/loginButton"
         android:layout_width="300dp"
+        android:layout_below="@+id/slogan_name"
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
@@ -46,6 +53,7 @@
         android:text="Button" />
 
     <RelativeLayout
+        android:layout_below="@+id/loginButton"
         android:id="@+id/googleSignInButton"
         android:layout_width="@dimen/base_login_button_width"
         android:layout_height="@dimen/base_login_button_height"
@@ -74,21 +82,33 @@
 
 
     <TextView
+        android:layout_below="@+id/googleSignInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/login_terms_condition_txt"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:paddingTop="15dp"
-        android:layout_below="@+id/login_details_RL3_id"
-        android:text="By signing up, you confirm that you agree to our \n Terms of Use and have read and understood \n our Privacy Policy."
+        android:textColor="#A9A9A9"
+        android:text="By continuing, you agree to SELFILM's \n Terms of Use and have read and understood \n our Privacy Policy."
         android:gravity="center"
         />
 
 
-
-
-
 </LinearLayout>
+
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terms of Use"
+        android:textColor="@color/white"></TextView>
+    <TextView
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Privacy policy"
+        android:textColor="@color/white"></TextView>
+
+</RelativeLayout>

@@ -1,34 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+    android:background="@color/black"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
         android:orientation="horizontal"
         android:id="@+id/toolbarlay"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@color/appcolorbg"
         android:layout_height="50dp">
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
+            android:layout_height="match_parent"
             android:id="@+id/cancelbtn"
-            android:contentInsetLeft="0dp"
-            android:contentInsetStart="0dp"
-            android:src="@drawable/ic_baseline_cancel_24"
+            android:src="@drawable/ic_baseline_close_24"
+            android:layout_margin="5dp"></ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Upload Video"
+            android:fontFamily="@font/seguisym"
+            android:textColor="@color/white"
             android:layout_gravity="center"
-            android:layout_margin="8dp"></ImageView>
-    </LinearLayout>
+            android:gravity="center"></TextView>
+    </RelativeLayout>
+
+<LinearLayout
+    android:id="@+id/previewlay"
+    android:layout_margin="8dp"
+    android:layout_below="@+id/toolbarlay"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+
         <FrameLayout
+
+            android:layout_margin="8dp"
             android:layout_below="@+id/toolbarlay"
             android:id="@+id/fl"
-            android:layout_width="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_width="200dp"
             android:background="@android:color/black"
-            android:layout_height="400dp">
+            android:layout_height="230dp">
             <VideoView
                 android:id="@+id/videoView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+
                 android:layout_gravity="center"/>
 
             <ImageView
@@ -38,50 +62,96 @@
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"
                 android:visibility="gone"/>
-            <ImageView
-                android:layout_gravity="end|bottom"
-                android:layout_margin="20dp"
-                android:layout_width="50dp"
-                android:src="@drawable/logonobg"
-                android:scaleType="fitXY"
-                android:layout_height="50dp"></ImageView>
 
             <ImageView
                 android:id="@+id/iv_play"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:src="@drawable/ic_chat_play"/>
         </FrameLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_below="@+id/fl"
+        android:id="@+id/line1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/edcaption"
-            android:layout_width="match_parent"
-            android:layout_margin="8dp"
-            android:layout_height="wrap_content"
-            android:hint="Caption here..."></EditText>
-        <EditText
-            android:id="@+id/edhashtags"
-            android:layout_width="match_parent"
-            android:layout_margin="8dp"
-            android:layout_height="wrap_content"
-            android:hint="#HashTags here..."></EditText>
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:orientation="vertical">
 
-        <Button
-            android:layout_marginTop="20dp"
+        <TextView
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:background="@drawable/follow_btn_bg"
-            android:text="Upload"
-            android:layout_marginLeft="8dp"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/seguisym"
+            android:text="Describe"
+            android:textColor="@color/graycolor"
+
+            />
+
+        <EditText
+            android:id="@+id/captioned"
+            android:layout_width="match_parent"
+            android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            android:layout_height="wrap_content"></Button>
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_white_corner_15"
+            android:backgroundTint="@color/appcolorbg"
+            android:elevation="5dp"
+            android:fontFamily="@font/seguisym"
+            android:gravity="top"
+            android:hint="Awesome caption.."
+            android:maxLength="175"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/graycolor"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="12dp" />
+
+
     </LinearLayout>
 
+
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/hashtagbar"
+        android:layout_below="@+id/previewlay"
+        android:layout_width="match_parent"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/hashtaged"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_white_corner_15"
+            android:backgroundTint="@color/appcolorbg"
+            android:elevation="5dp"
+            android:fontFamily="@font/seguisym"
+            android:gravity="top"
+            android:hint="# Hashtags here.. "
+            android:maxLength="175"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/graycolor"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="12dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/hashtagbar"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content">
+   <Button
+       android:id="@+id/uploadbtn"
+       android:gravity="center"
+       android:layout_width="200dp"
+       android:layout_height="wrap_content"
+       android:text="Upload"
+       android:textStyle="bold"
+       android:fontFamily="@font/seguisym"
+       android:background="@drawable/follow_btn_bg"></Button>
+    </LinearLayout>
 </RelativeLayout>

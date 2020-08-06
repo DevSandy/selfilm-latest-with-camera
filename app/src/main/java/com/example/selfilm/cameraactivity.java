@@ -4,14 +4,17 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.hardware.Camera;
 import android.media.MediaScannerConnection;
+import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
+import android.provider.MediaStore;
 import android.text.format.DateFormat;
 import android.util.DisplayMetrics;
 import android.view.Surface;
@@ -29,6 +32,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.ankushgrover.hourglass.Hourglass;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,12 +54,28 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
     Boolean isRecording = false;
     Boolean time15secboolean = true;
     Boolean time30secboolean = false;
+    String filepath;
+    Boolean pausetimer = false;
+    String outputFile = Environment.getExternalStorageDirectory() +"/selfilm";
+    Bitmap bmThumbnail;
+
+
+    private ImageButton switchCamera;
+    private ImageButton maskbtn;
+    private ImageButton effectbtn;
+    private ImageButton filterbtn;
+    private TextView fliptxt;
+    private TextView masktext;
+    private TextView effecttext;
+    private TextView filtertext;
     private int currentMask=0;
     TextView time30sec;
     TextView time15sec;
-    int timer;
     private int currentEffect=0;
     private int currentFilter=0;
+    private int timerint = 15000;
+
+    private Hourglass hourglass;
 
     private int screenOrientation;
 
@@ -144,9 +165,18 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
     private void initalizeViews() {
         ImageButton previousMask = findViewById(R.id.previousMask);
         ImageButton nextMask = findViewById(R.id.nextMaskk);
+        maskbtn = findViewById(R.id.maskbtn);
+        effectbtn = findViewById(R.id.effectbtn);
+        filterbtn = findViewById(R.id.filterbtn);
+        fliptxt = findViewById(R.id.fliptxt);
+        masktext = findViewById(R.id.masktxt);
+        effecttext = findViewById(R.id.effecttxt);
+        filtertext = findViewById(R.id.filtertxt);
+        switchCamera = findViewById(R.id.switchCamera);
         final RadioButton radioMasks = findViewById(R.id.masks);
         final RadioButton radioEffects = findViewById(R.id.effects);
         final RadioButton radioFilters = findViewById(R.id.filters);
+
         SurfaceView arView = findViewById(R.id.surface);
         arView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +190,8 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
 
 
         arView.setVisibility(View.VISIBLE);
-        ImageButton maskbtn = findViewById(R.id.maskbtn);
+
+
         ImageView btn_capture = findViewById(R.id.btn_capture);
          time15sec = findViewById(R.id.time15sec);
          time30sec = findViewById(R.id.time30sec);
@@ -178,6 +209,7 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
                 time15sec.setTextColor(ContextCompat.getColor(cameraactivity.this, R.color.white));
                 time30sec.setBackground(ContextCompat.getDrawable(cameraactivity.this, R.drawable.bg_white_corner_5));
                 time30sec.setTextColor(ContextCompat.getColor(cameraactivity.this, R.color.black));
+                timerint = 15000;
             }
         });
         time30sec.setOnClickListener(new View.OnClickListener() {
@@ -189,6 +221,7 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
                 time15sec.setTextColor(ContextCompat.getColor(cameraactivity.this, R.color.black));
                 time30sec.setBackground(ContextCompat.getDrawable(cameraactivity.this, R.drawable.blackbackgroundtimer));
                 time30sec.setTextColor(ContextCompat.getColor(cameraactivity.this, R.color.white));
+                timerint = 30000;
             }
         });
 
@@ -197,23 +230,52 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
             @Override
             public void onClick(View view) {
                 if (isRecording == false){
-                    isRecording = true;
-                    Animation animation = AnimationUtils.loadAnimation(cameraactivity.this, R.anim.scale);
-                    btn_capture.startAnimation(animation);
-                    btn_capture.setImageDrawable(ContextCompat.getDrawable(cameraactivity.this, R.drawable.ic_record_start));
-                    startrecording();
+                    if (pausetimer == false){
+                        isRecording = true;
+                        Animation animation = AnimationUtils.loadAnimation(cameraactivity.this, R.anim.scale);
+                        btn_capture.startAnimation(animation);
+                        btn_capture.setImageDrawable(ContextCompat.getDrawable(cameraactivity.this, R.drawable.ic_record_start));
+                        starttimerrec15();
+
+                    }else {
+                        Toast.makeText(cameraactivity.this, "resumed", Toast.LENGTH_SHORT).show();
+                        isRecording = true;
+                        pausetimer = false;
+                        hourglass.resumeTimer();
+                        time15sec.setVisibility(View.INVISIBLE);
+                        time30sec.setVisibility(View.INVISIBLE);
+                        switchCamera.setVisibility(View.INVISIBLE);
+                        maskbtn.setVisibility(View.INVISIBLE);
+                        filterbtn.setVisibility(View.INVISIBLE);
+                        effectbtn.setVisibility(View.INVISIBLE);
+                        effecttext.setVisibility(View.INVISIBLE);
+                        masktext.setVisibility(View.INVISIBLE);
+                        filtertext.setVisibility(View.INVISIBLE);
+                        fliptxt.setVisibility(View.INVISIBLE);
+                    }
+
                 }else {
-                    Animation animation = AnimationUtils.loadAnimation(cameraactivity.this, R.anim.scale);
-                    btn_capture.startAnimation(animation);
                     btn_capture.setImageDrawable(ContextCompat.getDrawable(cameraactivity.this, R.drawable.ic_record_stop_));
                     isRecording = false;
-                    stoprecording();
+                    pausetimer = true;
+                    Toast.makeText(cameraactivity.this, "paused", Toast.LENGTH_SHORT).show();
+                    hourglass.pauseTimer();
+//                    btn_capture.setVisibility(View.VISIBLE);
+                    time15sec.setVisibility(View.VISIBLE);
+                    time30sec.setVisibility(View.VISIBLE);
+                    switchCamera.setVisibility(View.VISIBLE);
+                    maskbtn.setVisibility(View.VISIBLE);
+                    filterbtn.setVisibility(View.VISIBLE);
+                    effectbtn.setVisibility(View.VISIBLE);
+                    effecttext.setVisibility(View.VISIBLE);
+                    masktext.setVisibility(View.VISIBLE);
+                    filtertext.setVisibility(View.VISIBLE);
+                    fliptxt.setVisibility(View.VISIBLE);
                 }
             }
         });
 
 
-        ImageButton switchCamera = findViewById(R.id.switchCamera);
         switchCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,6 +327,59 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
             get interface orientation from
             https://stackoverflow.com/questions/10380989/how-do-i-get-the-current-orientation-activityinfo-screen-orientation-of-an-a/10383164
          */
+
+    public void starttimerrec15(){
+
+        // Record the left half of the screen
+        Rect subframe = new Rect();
+        subframe.left = 0;
+        subframe.right = deepAR.getRenderWidth();
+        subframe.top = 0;
+        subframe.bottom = deepAR.getRenderHeight();
+        filepath = Environment.getExternalStorageDirectory().toString() + File.separator + "video.mp4";
+        deepAR.startVideoRecording(filepath);
+
+//        btn_capture.setVisibility(View.INVISIBLE);
+        time15sec.setVisibility(View.INVISIBLE);
+        time30sec.setVisibility(View.INVISIBLE);
+        switchCamera.setVisibility(View.INVISIBLE);
+        maskbtn.setVisibility(View.INVISIBLE);
+        filterbtn.setVisibility(View.INVISIBLE);
+        effectbtn.setVisibility(View.INVISIBLE);
+        effecttext.setVisibility(View.INVISIBLE);
+        masktext.setVisibility(View.INVISIBLE);
+        filtertext.setVisibility(View.INVISIBLE);
+        fliptxt.setVisibility(View.INVISIBLE);
+
+        hourglass = new Hourglass(timerint, 1000) {
+            @Override
+            public void onTimerTick(long timeRemaining) {
+                // Update UI
+//                Toast.makeText(cameraactivity.this, String.valueOf(timeRemaining), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTimerFinish() {
+                // Timer finished
+                isRecording = false;
+                pausetimer = false;
+//                Toast.makeText(cameraactivity.this, "Timer finished and recording" + filepath, Toast.LENGTH_SHORT).show();
+                deepAR.stopVideoRecording();
+//                btn_capture.setVisibility(View.VISIBLE);
+                time15sec.setVisibility(View.VISIBLE);
+                time30sec.setVisibility(View.VISIBLE);
+                switchCamera.setVisibility(View.VISIBLE);
+                maskbtn.setVisibility(View.VISIBLE);
+                filterbtn.setVisibility(View.VISIBLE);
+                effectbtn.setVisibility(View.VISIBLE);
+
+            }
+        };
+        hourglass.startTimer();
+
+
+    }
+
     private int getScreenOrientation() {
         int rotation = getWindowManager().getDefaultDisplay().getRotation();
         DisplayMetrics dm = new DisplayMetrics();
@@ -323,36 +438,7 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
 
         return orientation;
     }
-    public void startrecording(){
 
-        if (time15secboolean == true){
-            timer = 15000;
-        }else {
-            timer = 30000;
-        }
-        time15sec.setVisibility(View.GONE);
-        time30sec.setVisibility(View.GONE);
-
-        String path = Environment.getExternalStorageDirectory().getPath()+"videocapture_example.mp4";
-
-        deepAR.startVideoRecording(path);
-         Handler handler = new Handler();
-         Runnable runnable = new Runnable(){
-            public void run() {
-                deepAR.stopVideoRecording();
-                Toast.makeText(cameraactivity.this, "C'Mom no hands!"+path, Toast.LENGTH_SHORT).show();
-            }
-        };
-        handler.postAtTime(runnable, System.currentTimeMillis()+timer);
-        handler.postDelayed(runnable, timer);
-    }
-    public void stoprecording(){
-
-        time15sec.setVisibility(View.VISIBLE);
-        time30sec.setVisibility(View.VISIBLE);
-        deepAR.pauseVideoRecording();
-        Toast.makeText(this, "stop", Toast.LENGTH_SHORT).show();
-    }
 
     private void initializeDeepAR() {
         deepAR = new DeepAR(this);
@@ -408,6 +494,14 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
             return null;
         }
         return "file:///android_asset/" + filterName;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent  = new Intent(cameraactivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void gotoNext() {
@@ -501,6 +595,13 @@ public class cameraactivity extends AppCompatActivity implements SurfaceHolder.C
 
     @Override
     public void videoRecordingFinished() {
+        bmThumbnail = ThumbnailUtils.createVideoThumbnail(filepath, MediaStore.Images.Thumbnails.MINI_KIND);
+        Intent intent = new Intent(cameraactivity.this, TrimVideoActivity.class);
+        intent.putExtra("videoPath",filepath);
+//        intent.putExtra("thumb",bmThumbnail);
+        startActivityForResult(intent, 100);
+        finish();
+//        Toast.makeText(this, "saved", Toast.LENGTH_SHORT).show();
 
     }
 

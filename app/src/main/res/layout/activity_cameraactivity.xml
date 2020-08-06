@@ -13,24 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/surface"/>
-    <ImageButton
-        android:id="@+id/flashbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:background="@color/transparent"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_flash_on" />
-    <TextView
-        android:layout_below="@+id/flashbtn"
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:text="Flash"
-        android:id="@+id/txtflash"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:layout_height="wrap_content"></TextView>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
